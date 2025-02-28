@@ -1,0 +1,10 @@
+spring:
+  config:
+    activate:
+      on-profile: db
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/pickachat?useSSL=false&serverTimeZone=Asia/Seoul
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: asd123

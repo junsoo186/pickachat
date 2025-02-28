@@ -1,0 +1,22 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
+
+  datasource:
+    url: jdbc:h2:mem:pickachat_dev;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+
+server:
+  servlet:
+    encoding:
+      enabled: true
+      force: true
+      force-response: true
+      charset: UTF-8

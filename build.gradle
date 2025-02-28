@@ -1,0 +1,57 @@
+plugins {
+    id 'org.springframework.boot' version '3.4.3'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'java'
+    id 'war'
+}
+
+group = 'com.pickachat'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '21'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 데이터 접근, 인증, 유효성 검사, 웹 관련 의존성
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    
+    // WebSocket 지원 (WebSocketMessageBrokerConfigurer 등 포함)
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    
+    // 개발 도구
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    
+    // 데이터베이스 관련 의존성
+    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    
+    // 내장 톰캣 (WAR 패키징 시, 외부 톰캣 사용시 providedRuntime 으로 변경 가능)
+    implementation 'org.springframework.boot:spring-boot-starter-tomcat'
+    // providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    
+    // 테스트 관련 의존성
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    
+    // JSP 관련 의존성
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+    implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '3.0.0'
+    providedRuntime 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+    
+    // Jackson 모듈 추가 (JSR-310: Java 8 이상의 날짜/시간 API 지원)
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
